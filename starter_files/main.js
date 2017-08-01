@@ -97,4 +97,11 @@ let formData = [
 
 // -------- Your Code Goes Below this Line --------
 
+let fields = document.getElementById('fields');
 
+for (var i = 0; i < formData.length; i++) {
+  var input = document.createElement("input");
+
+  input.setAttribute("type", formData[i].type);
+
+}
