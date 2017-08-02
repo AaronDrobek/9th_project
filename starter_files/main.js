@@ -98,10 +98,32 @@ let formData = [
 // -------- Your Code Goes Below this Line --------
 
 let fields = document.getElementById('fields');
+let form   = document.createElement("form");
 
 for (var i = 0; i < formData.length; i++) {
   var input = document.createElement("input");
 
-  input.setAttribute("type", formData[i].type);
+  if (formData[i].options.length > 0) {
+    var select = document.createElement("select");
+
+    for (var j = 0; j < formData[i].options.length; j++) {
+      let options = document.createElement("option");
+      options.setAttribute("label", formData[i].options[j].label);
+      options.setAttribute("value", formData[i].options[j].value);
+
+      select.appendChild(options);
+
+      fields.appendChild(select);
+    }
+
+  } else {
+
+    input.setAttribute("type", formData[i].type);
+    input.setAttribute("id", formData[i].id);
+    input.setAttribute("placeholder", formData[i].label);
+
+    fields.appendChild(input);
+
+  }
 
 }
